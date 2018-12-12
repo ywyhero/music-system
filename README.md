@@ -1,4 +1,4 @@
-# music-system
+# musiSsystem
 
 ## Project setup
 ```
