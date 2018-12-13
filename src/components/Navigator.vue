@@ -31,7 +31,6 @@ import { httpLogin } from './../config/api'
         'el-menu': Menu,
         'el-menu-item': MenuItem,
         'el-submenu': Submenu
-
     }
 })
 export default class Nav extends Vue {

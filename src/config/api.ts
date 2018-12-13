@@ -24,3 +24,17 @@ export const httpBookLists = {
     }
    
 }
+export const httpBookDetail = {
+    bookDetailInfo: (params: object = {}) : any => {
+        return http('post', '/book/listLibBook', params)
+    },
+    getSwitchLists: (params: object = {}) : any => {
+        return http('post', '/bdicon/dropDownList', params)
+    },
+    modifyIcon: (params: object = {}) : any => {
+        return http('post', '/book/modifyIcon', params)
+    },
+   
+    
+    
+}

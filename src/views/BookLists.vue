@@ -121,7 +121,7 @@ export default class BookLists extends Vue {
 		this.height = window.innerHeight * 0.78;
 		this.getBookLists()
 	}
-	bookListStyle({ row }): object {
+	bookListStyle({ row }: { row: any }): any {
 		if (row.hasOnTheShelves === 1) {
 			return { color: "#c9c9c9" };
 		}
@@ -269,7 +269,7 @@ export default class BookLists extends Vue {
             }
 		})
 	}
-	toBookDetail(id): void {
+	toBookDetail(id: string): void {
 		this.$router.push({path: '/bookdetail', query: {bookId: id}});
 	}
 	download(bookId: number, type: string) {
