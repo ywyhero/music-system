@@ -2,38 +2,41 @@
 	<div class="book-lists">
 		<Navigator></Navigator>
 		<Book-Lists-Search @search-result="searchResult"></Book-Lists-Search>
-		<el-table :data="bookLists" border style="width: 100%" :height="height" :row-style="bookListStyle">
-			<el-table-column  v-for="(item, index) in columns" align='center' v-if="!pathArray.includes(item.prop)" :key="index" :fixed="item.fixed" :prop="item.prop" :label="item.label"></el-table-column>
-			<el-table-column v-else align="center" :key="index" :prop="item.prop" :label="item.label">
-				<template slot-scope="scope">
-					<div :key="index" >
-						<img class="book-list-img" :src="scope.row.imageUrl" @click="priveiwImg(scope.row.imageUrl)" alt="">
-					</div>
-				</template>
-			</el-table-column>
-			<el-table-column label="操作" align='center'>
-				<template slot-scope="scope">
-					<div class="book-lists-actions">
-						<el-button class="book-lists-actions-btn" @click="toBookDetail(scope.row.bookId)" type="primary" size="small">查看</el-button>
-						<el-button class="book-lists-actions-btn" type="primary" @click="putBook(scope.$index, scope.row.bookId, 0)" :disabled="scope.row.isPutClick" v-show="scope.row.hasOnTheShelves === 1" size="small">上架</el-button>
-						<el-button class="book-lists-actions-btn" type="primary" @click="putBook(scope.$index, scope.row.bookId, 1)" :disabled="scope.row.isPutClick" v-show="scope.row.hasOnTheShelves === 0" size="small">下架</el-button>
-						<el-button class="book-lists-actions-btn" type="primary" @click="deleteClick(scope.$index, scope.row.bookId)" :disabled="scope.row.isDeleteClick" v-show="scope.row.hasOnTheShelves === 1" size="small">删除</el-button>						
-						<el-dropdown @command="download(scope.row.bookId, $event)">
-							<el-button class="book-lists-actions-dropdown-btn"  type="primary">
-								更多<i class="el-icon-arrow-down el-icon--right"></i>
-							</el-button>
-							<el-dropdown-menu slot="dropdown">
-								<el-dropdown-item command="edit">编辑</el-dropdown-item>
-								<el-dropdown-item command="image">下载图片</el-dropdown-item>
-								<el-dropdown-item command="audio">下载音频</el-dropdown-item>
-								<el-dropdown-item command="video">下载视频</el-dropdown-item>
-							</el-dropdown-menu>
-						</el-dropdown>
-					</div>	
-					
-				</template>
-			</el-table-column>
-		</el-table>
+		<div class="book-lists-table">
+			<el-table :data="bookLists" border style="width: 100%" :height="height" :row-style="bookListStyle">
+				<el-table-column  v-for="(item, index) in columns" align='center' v-if="!pathArray.includes(item.prop)" :key="index" :fixed="item.fixed" :prop="item.prop" :label="item.label"></el-table-column>
+				<el-table-column v-else align="center" :key="index" :prop="item.prop" :label="item.label">
+					<template slot-scope="scope">
+						<div :key="index" >
+							<img class="book-list-img" :src="scope.row.imageUrl" @click="priveiwImg(scope.row.imageUrl)" alt="">
+						</div>
+					</template>
+				</el-table-column>
+				<el-table-column label="操作" align='center'>
+					<template slot-scope="scope">
+						<div class="book-lists-actions">
+							<el-button class="book-lists-actions-btn" @click="toBookDetail(scope.row.bookId)" type="primary" size="small">查看</el-button>
+							<el-button class="book-lists-actions-btn" type="primary" @click="putBook(scope.$index, scope.row.bookId, 0)" :disabled="scope.row.isPutClick" v-show="scope.row.hasOnTheShelves === 1" size="small">上架</el-button>
+							<el-button class="book-lists-actions-btn" type="primary" @click="putBook(scope.$index, scope.row.bookId, 1)" :disabled="scope.row.isPutClick" v-show="scope.row.hasOnTheShelves === 0" size="small">下架</el-button>
+							<el-button class="book-lists-actions-btn" type="primary" @click="deleteClick(scope.$index, scope.row.bookId)" :disabled="scope.row.isDeleteClick" v-show="scope.row.hasOnTheShelves === 1" size="small">删除</el-button>						
+							<el-dropdown @command="download(scope.row.bookId, $event)">
+								<el-button class="book-lists-actions-dropdown-btn"  type="primary">
+									更多<i class="el-icon-arrow-down el-icon--right"></i>
+								</el-button>
+								<el-dropdown-menu slot="dropdown">
+									<el-dropdown-item command="edit">编辑</el-dropdown-item>
+									<el-dropdown-item command="image">下载图片</el-dropdown-item>
+									<el-dropdown-item command="audio">下载音频</el-dropdown-item>
+									<el-dropdown-item command="video">下载视频</el-dropdown-item>
+								</el-dropdown-menu>
+							</el-dropdown>
+						</div>	
+						
+					</template>
+				</el-table-column>
+			</el-table>
+		</div>
+		
 		<div class="book-lists-pagination fr">
 			<el-pagination
 				@size-change="handleSizeChange"
@@ -57,7 +60,7 @@ import BookListsSearch from "./../components/BookListsSearch.vue";
 import { columns } from "./../until/initData";
 import { httpBookLists } from "./../config/api";
 import { Table, TableColumn, Select, Option, Pagination, Button, Dropdown, DropdownMenu, DropdownItem, Message, MessageBox} from "element-ui";
-import {Getter, Action} from 'vuex-class'
+import { Getter, Action } from 'vuex-class'
 import apiHost from './../config/config'
 @Component({
 	components: {
@@ -286,8 +289,11 @@ export default class BookLists extends Vue {
 <style scoped lang="less">
 .book-lists {
 	height: 100%;
+	.book-lists-table{
+		padding: 20px;
+	}
 	.book-lists-pagination {
-		margin: 20px 20px 20px 0;
+		margin: 0px 20px 20px 0;
 	}
 }
 .book-list-color{

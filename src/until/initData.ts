@@ -44,3 +44,18 @@ export const searchTypes:  Array<object> = [
     {"searchName": "书本ID", "id": 2, "number": 1},
     {"searchName": "乐谱名", "id": 3, "number": 2}
 ]
+export const detailSearchTypes:  Array<object> = [
+    {"searchName": "乐谱名", "id": 1, "number": 0},
+    {"searchName": "乐谱ID", "id": 2, "number": 1}
+]
+
+export const detailCoumns: Array<object> = [
+    { prop: 'coursesname', label: '乐谱名', fixed: true },
+    { prop: 'sort', label: '序号', fixed: false },
+    { prop: 'coursesId', label: '乐谱ID', fixed: false },
+    { prop: 'levelName', label: '级别', fixed: false },
+    { prop: 'pageNum', label: '乐谱页数', fixed: false },
+    { prop: 'musicFilePath', label: '音频', fixed: false },
+    { prop: 'videoFilePath', label: '视频', fixed: false },
+    { prop: 'hasOnTheShelvesName', label: '状态', fixed: false }
+]

@@ -34,7 +34,24 @@ export const httpBookDetail = {
     modifyIcon: (params: object = {}) : any => {
         return http('post', '/book/modifyIcon', params)
     },
+    listLibCourse: (params: object = {}) : any => {
+        return http('post', '/course/listLibCourse', params)
+    },
+    findVideoCompressStatus: (params: object = {}) : any => {
+        return http('post', '/course/findVideoCompressStatus', params)
+    },
+    auditIsCheckVideo: (params: object = {}) : any => {
+        return http('post', '/course/auditIsCheckVideo', params)
+    },
+    clearPublicCourseVideo: (params: object = {}) : any => {
+        return http('post', '/course/clearPublicCourseVideo', params)
+    },
+    auditIsDeletes: (params: object = {}) : any => {
+        return http('post', '/course/auditIsDeletes', params)
+    },
+    deleteCoures: (params: object = {}) : any => {
+        return http('post', '/course/delete', params)
+    },
    
-    
-    
+
 }

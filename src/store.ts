@@ -14,6 +14,8 @@ export default new Vuex.Store({
         audioType: '',
         checkType: '',
         iconType: '',
+        detailStatusType: '',
+        detailCheckType: '',
 
     },
     getters: {
@@ -26,6 +28,8 @@ export default new Vuex.Store({
         getAudioType: state => state.audioType,
         getCheckType: state => state.checkType,
         getIconType: state => state.iconType,
+        getDetailStatusType: state => state.detailStatusType,
+        getDetailCheckType: state => state.detailCheckType,
     },
     mutations: {
         ADD_LOGIN_DATA(state, v) {
@@ -54,6 +58,12 @@ export default new Vuex.Store({
         },
         ICON_TYPE(state, v) {
             state.iconType = v
+        },
+        DETAIL_STATUS_TYPE(state, v) {
+            state.detailStatusType = v
+        },
+        DETAIL_CHECK_TYPE(state, v) {
+            state.detailCheckType = v
         }
     },
     actions: {
@@ -83,6 +93,12 @@ export default new Vuex.Store({
         },
         changeIconType({commit}, v) {
             commit('ICON_TYPE', v)
-        }
+        },
+        changeDetailStatusType({commit}, v) {
+            commit('DETAIL_STATUS_TYPE', v)
+        },
+        changeDetailCheckType({commit}, v) {
+            commit('DETAIL_CHECK_TYPE', v)
+        },
     }
 })

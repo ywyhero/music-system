@@ -151,7 +151,6 @@
     width: 100%;
     border-bottom: 1px solid #e6e6e6;
     display: flex;
-    
     .detail-title-info{
         display: flex;
         width: 70%;
